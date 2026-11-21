@@ -1,11 +1,11 @@
 # Whitelist: nur eigene Arbeit versionieren, keine Spieldaten / ISO-Inhalte / Ghidra-DB
 /*
 !/.gitignore
-!/CLAUDE.md
 !/README.md
 !/LICENSE
 !/installer/
-!/.mcp.json
+!/.mcp.json.example
+# CLAUDE.md (Arbeitsanweisungen) und .mcp.json (lokale Pfade) bleiben bewusst lokal
 !/patches/
 !/tools/
 !/notes/
