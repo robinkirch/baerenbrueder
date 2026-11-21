@@ -1,0 +1,21 @@
+# Whitelist: nur eigene Arbeit versionieren, keine Spieldaten / ISO-Inhalte / Ghidra-DB
+/*
+!/.gitignore
+!/CLAUDE.md
+!/README.md
+!/installer/
+!/.mcp.json
+!/patches/
+!/tools/
+!/notes/
+
+# Aus dem Originalspiel abgeleitete Daten (dekompilierte Skripte, Logs mit Spieltexten, Map-Exporte):
+# bleiben lokal, gehoeren nicht ins oeffentliche Repository
+notes/uc/
+notes/logs/
+notes/maps/
+
+# Build-Artefakte
+tools/udecomp/bin/
+tools/udecomp/obj/
+__pycache__/
