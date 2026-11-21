@@ -25,17 +25,44 @@ unter Windows 10/11 (x64) stabil läuft. Das Original lief nur unter Windows XP 
 
 Details zu Ursachen und Adressen: [`CLAUDE.md`](CLAUDE.md) und [`notes/`](notes/).
 
-## Selbst bauen
+## Anleitung: eigenes Spiel patchen
 
-Voraussetzungen: Windows, Python 3 mit `pefile` (`pip install pefile`), eine Original-CD/ISO des Spiels,
-[OpenAL Soft 1.25.2](https://github.com/kcat/openal-soft/releases) (`bin\Win32\soft_oal.dll`) und für den
-Installer [Inno Setup 6](https://jrsoftware.org/isdl.php).
+Du brauchst die **deutsche PC-Version** von „Disneys Bärenbrüder“ (2003), als Original-CD oder als Abbild (ISO)
+deiner CD. Andere Sprachversionen werden nicht unterstützt: Die Patches prüfen jede Datei per Prüfsumme und brechen
+bei Abweichungen ab, statt etwas kaputt zu machen.
 
-1. Inhalt der Original-CD in das Repository-Verzeichnis kopieren (es muss `SETUP\Bears\` geben).
-2. `SETUP\Bears\` nach `game\` kopieren und `soft_oal.dll` als `game\system\OpenAL32.dll` ablegen.
-3. Patches anwenden: `python patches/apply_all.py` (prüft die Originaldateien, arbeitet immer von `SETUP\Bears\` aus).
-4. Paket bauen: `python tools/build_dist.py --installer`
-   → `dist\Baerenbrueder\` (spielbarer Ordner) und `dist\Baerenbrueder-Win11-Setup.exe`.
+1. **Python installieren:** [python.org/downloads](https://www.python.org/downloads/). Im Installer
+   **„Add python.exe to PATH“** ankreuzen.
+2. **Dieses Repository herunterladen:** oben auf GitHub *Code → Download ZIP* und entpacken, z. B. nach
+   `C:\Spiele\Baerenbrueder-Win11`.
+3. **Spieldateien hineinkopieren:** CD einlegen bzw. die ISO per Doppelklick einbinden und den **gesamten Inhalt**
+   der CD in den entpackten Ordner kopieren. Danach muss es dort den Ordner `SETUP\Bears\` geben.
+   Das Original-Setup der CD wird **nicht** ausgeführt.
+4. **OpenAL Soft herunterladen** (moderner Audiotreiber):
+   [openal-soft Releases](https://github.com/kcat/openal-soft/releases) → `openal-soft-1.25.2-bin.zip` und entpacken.
+   Benötigt wird daraus `bin\Win32\soft_oal.dll`.
+5. **Patchen:** im entpackten Ordner in der Adresszeile des Explorers `cmd` eingeben (öffnet die Eingabeaufforderung
+   dort) und ausführen:
+
+   ```bat
+   pip install pefile
+   python patches\apply_all.py --openal "C:\Pfad\zu\openal-soft-1.25.2-bin\bin\Win32\soft_oal.dll"
+   ```
+
+   Das Skript legt den Ordner `game\` an (Kopie von `SETUP\Bears\`) und patcht nur diese Kopie. Die Originaldateien
+   bleiben unverändert.
+6. **Spielen:** `game\system\Game.exe` starten. Der Ordner `game\` kann beliebig verschoben werden
+   (Verknüpfung auf `Game.exe` anlegen). Einstellungen und Spielstände liegen unter
+   `%ProgramData%\Disney Interactive\Bärenbrüder\System`.
+
+**Optional: Installer bauen.** Mit [Inno Setup 7](https://jrsoftware.org/isdl.php) erzeugt
+`python tools\build_dist.py --installer` einen bereinigten Spielordner `dist\Baerenbrueder\` (ohne
+Sicherungskopien und Entwicklerwerkzeuge) und `dist\Baerenbrueder-Win11-Setup.exe`. Diese Dateien enthalten das
+komplette Spiel. Bitte **nicht öffentlich** weitergeben.
+
+Für Entwickler: Der UnrealScript-Dekompiler `tools/udecomp` (.NET 10, UELib) wird nur für neue Bytecode-Patches
+gebraucht. Die vorhandenen Patches nutzen die zwischengespeicherten Anweisungsgrenzen in
+`patches/hgame_statements.json`.
 
 ## Aufbau
 
