@@ -27,9 +27,14 @@ Details zu Ursachen und Adressen: [`CLAUDE.md`](CLAUDE.md) und [`notes/`](notes/
 
 ## Anleitung: eigenes Spiel patchen
 
-Du brauchst die **deutsche PC-Version** von „Disneys Bärenbrüder“ (2003), als Original-CD oder als Abbild (ISO)
-deiner CD. Andere Sprachversionen werden nicht unterstützt: Die Patches prüfen jede Datei per Prüfsumme und brechen
-bei Abweichungen ab, statt etwas kaputt zu machen.
+Du brauchst die PC-Version von „Disneys Bärenbrüder“ (2003), als Original-CD oder als Abbild (ISO) deiner CD.
+
+**Getestet ist nur die deutsche Version.** Die gepatchten Programmdateien enthalten keine Texte (die stehen in den
+`.int`-Sprachdateien), deshalb funktionieren andere Sprachversionen sehr wahrscheinlich auch – sofern ihre
+Programmdateien identisch sind. Das prüfen die Patches selbst: Jede Datei wird vor dem Patchen per Prüfsumme mit dem
+bekannten Stand verglichen. Bei Abweichung bricht das Skript ab, statt etwas zu beschädigen. In dem Fall freue ich
+mich über ein Issue mit Sprachversion und Meldung. Einziger sichtbarer Unterschied: Die neue Menüzeile heißt auch in
+anderen Sprachen „Bildrate“.
 
 1. **Python installieren:** [python.org/downloads](https://www.python.org/downloads/). Im Installer
    **„Add python.exe to PATH“** ankreuzen.
