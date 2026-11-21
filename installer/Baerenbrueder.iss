@@ -1,4 +1,4 @@
-﻿; Inno-Setup-Skript (Inno Setup 6) fuer die Windows-11-Fassung von "Disneys Baerenbrueder".
+﻿; Inno-Setup-Skript (Inno Setup 7, kompatibel mit 6) fuer die Windows-11-Fassung von "Disneys Baerenbrueder".
 ; Quelle: dist\Baerenbrueder\ (vorher bauen mit: python tools/build_dist.py)
 ; Kompilieren: "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer\Baerenbrueder.iss
 ;              oder python tools/build_dist.py --installer

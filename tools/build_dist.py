@@ -1,4 +1,4 @@
-r"""Baut das auslieferbare Spielpaket dist\Baerenbrueder\ aus der gepatchten Testinstallation game\.
+﻿r"""Baut das auslieferbare Spielpaket dist\Baerenbrueder\ aus der gepatchten Testinstallation game\.
 
 Ablauf:
   1. patches/apply_all.py (alle Patches frisch aus den Originalen; mit --no-apply ueberspringen)
@@ -59,10 +59,11 @@ def sha256(p):
 def find_iscc():
     for base in (os.environ.get("ProgramFiles(x86)"), os.environ.get("ProgramFiles"),
                  os.path.join(os.environ.get("LOCALAPPDATA", ""), "Programs")):
-        if base:
-            p = Path(base) / "Inno Setup 6" / "ISCC.exe"
-            if p.exists():
-                return p
+        for ver in ("7", "6"):
+            if base:
+                p = Path(base) / f"Inno Setup {ver}" / "ISCC.exe"
+                if p.exists():
+                    return p
     return shutil.which("ISCC")
 
 
@@ -113,7 +114,7 @@ def main():
     if "--installer" in sys.argv:
         iscc = find_iscc()
         if not iscc:
-            sys.exit("Inno Setup 6 (ISCC.exe) nicht gefunden - https://jrsoftware.org/isdl.php")
+            sys.exit("Inno Setup 7/6 (ISCC.exe) nicht gefunden - https://jrsoftware.org/isdl.php")
         r = subprocess.run([str(iscc), "/Q", str(ISS)])
         if r.returncode != 0:
             sys.exit("ISCC fehlgeschlagen")
