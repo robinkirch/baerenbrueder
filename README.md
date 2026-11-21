@@ -2,6 +2,7 @@
 
 **[English](#english)** · **[Deutsch](#deutsch)**
 
+These files do not contain any Game files. Please use your one files or serch on https://archive.org/details/barenbruder for legitime files. I do not know if the files in archive.org are legit and legaly fine.
 ---
 
 ## English
@@ -189,3 +190,5 @@ urheberrechtlich geschützt und nicht Teil dieses Repositorys.
 
 Die mitgelieferten Lizenztexte für OpenAL Soft (LGPL) liegen in `patches/thirdparty/`. „Disneys Bärenbrüder“ ist eine
 Marke der Disney Enterprises, Inc.; dieses Projekt steht in keiner Verbindung zu Disney oder KnowWonder.
+
+
