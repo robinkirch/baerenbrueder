@@ -75,6 +75,9 @@ gebraucht. Die vorhandenen Patches nutzen die zwischengespeicherten Anweisungsgr
 
 ## Lizenz
 
-Die eigenen Skripte und Notizen in diesem Repository: noch festzulegen. Mitgelieferte Lizenztexte für OpenAL Soft
-(LGPL) liegen in `patches/thirdparty/`. „Disneys Bärenbrüder“ ist eine Marke der Disney Enterprises, Inc.; dieses
-Projekt steht in keiner Verbindung zu Disney oder KnowWonder.
+Die Skripte, Werkzeuge und Notizen in diesem Repository stehen unter der
+[GNU General Public License v3.0](LICENSE). Die Lizenz gilt **nicht** für das Spiel selbst: Seine Dateien sind
+urheberrechtlich geschützt und nicht Teil dieses Repositorys.
+
+Die mitgelieferten Lizenztexte für OpenAL Soft (LGPL) liegen in `patches/thirdparty/`. „Disneys Bärenbrüder“ ist eine
+Marke der Disney Enterprises, Inc.; dieses Projekt steht in keiner Verbindung zu Disney oder KnowWonder.
